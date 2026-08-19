@@ -1,0 +1,600 @@
+
+<!DOCTYPE HTML>
+<html lang="zh-hans" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>表操作 · MySQL</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        <meta name="author" content="Kuriv Vesti">
+        
+        
+    
+    <link rel="stylesheet" href="../../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-back-to-top-button/plugin.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-lightbox/css/lightbox.min.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-prism/prism-okaidia.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-search-pro/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-splitter/splitter.css">
+                
+            
+                
+                <link rel="stylesheet" href="../../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../DML.html" />
+    
+    
+    <link rel="prev" href="数据库操作.html" />
+    
+
+    
+        <link rel="shortcut icon" href='../../favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="bookmark" href='../../favicon.ico' type="image/x-icon">
+    
+    
+        <link rel="apple-touch-icon" href='../../favicon.png'>
+    
+    
+        
+        <link rel="apple-touch-icon" sizes="120x120" href="../../favicon-120x120.png">
+        
+        <link rel="apple-touch-icon" sizes="180x180" href="../../favicon-180x180.png">
+        
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="输入并搜索" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../../">
+            
+                <a href="../../">
+            
+                    
+                    MySQL
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.1" data-path="../安装 MySQL.html">
+            
+                <a href="../安装 MySQL.html">
+            
+                    
+                    安装 MySQL
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.2" data-path="../客户端连接.html">
+            
+                <a href="../客户端连接.html">
+            
+                    
+                    客户端连接
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.3" data-path="../DDL.html">
+            
+                <a href="../DDL.html">
+            
+                    
+                    DDL
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.3.1" data-path="数据库操作.html">
+            
+                <a href="数据库操作.html">
+            
+                    
+                    数据库操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.1.3.2" data-path="表操作.html">
+            
+                <a href="表操作.html">
+            
+                    
+                    表操作
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.4" data-path="../DML.html">
+            
+                <a href="../DML.html">
+            
+                    
+                    DML
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.4.1" data-path="../DML/添加数据.html">
+            
+                <a href="../DML/添加数据.html">
+            
+                    
+                    添加数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.4.2" data-path="../DML/修改数据.html">
+            
+                <a href="../DML/修改数据.html">
+            
+                    
+                    修改数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.4.3" data-path="../DML/删除数据.html">
+            
+                <a href="../DML/删除数据.html">
+            
+                    
+                    删除数据
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.5" data-path="../DQL.html">
+            
+                <a href="../DQL.html">
+            
+                    
+                    DQL
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.1.5.1" data-path="../DQL/基本查询.html">
+            
+                <a href="../DQL/基本查询.html">
+            
+                    
+                    基本查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.5.2" data-path="../DQL/聚合函数.html">
+            
+                <a href="../DQL/聚合函数.html">
+            
+                    
+                    聚合函数
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.5.3" data-path="../DQL/分组查询.html">
+            
+                <a href="../DQL/分组查询.html">
+            
+                    
+                    分组查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.5.4" data-path="../DQL/排序查询.html">
+            
+                <a href="../DQL/排序查询.html">
+            
+                    
+                    排序查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.5.5" data-path="../DQL/分页查询.html">
+            
+                <a href="../DQL/分页查询.html">
+            
+                    
+                    分页查询
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.1.6" >
+            
+                <span>
+            
+                    
+                    [DCL]
+            
+                </span>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            本书使用 GitBook 发布
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href="../.." >表操作</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x8868;&#x64CD;&#x4F5C;">&#x8868;&#x64CD;&#x4F5C;</h1>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x67E5;&#x8BE2;&#x5F53;&#x524D;&#x6570;&#x636E;&#x5E93;&#x4E2D;&#x7684;&#x6240;&#x6709;&#x8868;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SHOW</span> <span class="token keyword">TABLES</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x521B;&#x5EFA;&#x65B0;&#x7684;&#x8868;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> data_type_example <span class="token punctuation">(</span>
+    <span class="token comment">-- &#x6574;&#x6570;&#x7C7B;&#x578B;</span>
+    col_tinyint <span class="token keyword">TINYINT</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;TINYINT&apos;</span><span class="token punctuation">,</span>
+    col_smallint <span class="token keyword">SMALLINT</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;SMALLINT&apos;</span><span class="token punctuation">,</span>
+    col_mediumint <span class="token keyword">MEDIUMINT</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;MEDIUMINT&apos;</span><span class="token punctuation">,</span>
+    col_int <span class="token keyword">INT</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;INT&apos;</span><span class="token punctuation">,</span>
+    col_bigint <span class="token keyword">BIGINT</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;BIGINT&apos;</span><span class="token punctuation">,</span>
+
+    <span class="token comment">-- &#x5C0F;&#x6570;&#x7C7B;&#x578B;</span>
+    col_float <span class="token keyword">FLOAT</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;FLOAT&apos;</span><span class="token punctuation">,</span>
+    col_double <span class="token keyword">DOUBLE</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;DOUBLE&apos;</span><span class="token punctuation">,</span>
+
+    <span class="token comment">-- &#x5B9A;&#x70B9;&#x6570;&#x7C7B;&#x578B;</span>
+    col_decimal <span class="token keyword">DECIMAL</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;DECIMAL&apos;</span><span class="token punctuation">,</span>
+
+    <span class="token comment">-- &#x5B57;&#x7B26;&#x4E32;&#x7C7B;&#x578B;</span>
+    col_char <span class="token keyword">CHAR</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;CHAR&apos;</span><span class="token punctuation">,</span>
+    col_varchar <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">100</span><span class="token punctuation">)</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;VARCHAR&apos;</span><span class="token punctuation">,</span>
+    col_tinytext <span class="token keyword">TINYTEXT</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;TINYTEXT&apos;</span><span class="token punctuation">,</span>
+    col_text <span class="token keyword">TEXT</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;TEXT&apos;</span><span class="token punctuation">,</span>
+    col_mediumtext <span class="token keyword">MEDIUMTEXT</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;MEDIUMTEXT&apos;</span><span class="token punctuation">,</span>
+    col_longtext <span class="token keyword">LONGTEXT</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;LONGTEXT&apos;</span><span class="token punctuation">,</span>
+
+    <span class="token comment">-- &#x679A;&#x4E3E;&#x7C7B;&#x578B;</span>
+    col_enum <span class="token keyword">ENUM</span><span class="token punctuation">(</span><span class="token string">&apos;foo&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;bar&apos;</span><span class="token punctuation">)</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;ENUM&apos;</span><span class="token punctuation">,</span>
+
+    <span class="token comment">-- &#x96C6;&#x5408;&#x7C7B;&#x578B;</span>
+    col_set <span class="token keyword">SET</span><span class="token punctuation">(</span><span class="token string">&apos;foo&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;bar&apos;</span><span class="token punctuation">,</span> <span class="token string">&apos;baz&apos;</span><span class="token punctuation">)</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;SET&apos;</span><span class="token punctuation">,</span>
+
+    <span class="token comment">-- JSON &#x7C7B;&#x578B;</span>
+    col_json JSON <span class="token keyword">COMMENT</span> <span class="token string">&apos;JSON&apos;</span><span class="token punctuation">,</span>
+
+    <span class="token comment">-- &#x4E8C;&#x8FDB;&#x5236;&#x7C7B;&#x578B;</span>
+    col_tinyblob <span class="token keyword">TINYBLOB</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;TINYBLOB&apos;</span><span class="token punctuation">,</span>
+    col_blob <span class="token keyword">BLOB</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;BLOB&apos;</span><span class="token punctuation">,</span>
+    col_mediumblob <span class="token keyword">MEDIUMBLOB</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;MEDIUMBLOB&apos;</span><span class="token punctuation">,</span>
+    col_longblob <span class="token keyword">LONGBLOB</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;LONGBLOB&apos;</span><span class="token punctuation">,</span>
+
+    <span class="token comment">-- &#x65E5;&#x671F;&#x65F6;&#x95F4;&#x7C7B;&#x578B;</span>
+    col_year <span class="token keyword">YEAR</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;YEAR&apos;</span><span class="token punctuation">,</span>
+    col_date <span class="token keyword">DATE</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;DATE&apos;</span><span class="token punctuation">,</span>
+    col_time <span class="token keyword">TIME</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;TIME&apos;</span><span class="token punctuation">,</span>
+    col_timestamp <span class="token keyword">TIMESTAMP</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;TIMESTAMP&apos;</span><span class="token punctuation">,</span>
+    col_datetime <span class="token keyword">DATETIME</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;DATETIME&apos;</span>
+<span class="token punctuation">)</span> <span class="token keyword">COMMENT</span> <span class="token string">&apos;EXAMPLE&apos;</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5F53;&#x8868;&#x4E0D;&#x5B58;&#x5728;&#x65F6;&#x624D;&#x6267;&#x884C;&#x521B;&#x5EFA;&#x64CD;&#x4F5C;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token operator">NOT</span> <span class="token keyword">EXISTS</span> demo <span class="token punctuation">(</span>
+    id <span class="token keyword">INT</span> <span class="token keyword">UNSIGNED</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token punctuation">,</span>
+    username <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">UNIQUE</span><span class="token punctuation">,</span>
+    password <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">50</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span><span class="token punctuation">,</span>
+    create_time <span class="token keyword">DATETIME</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CURRENT_TIMESTAMP</span>
+<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x4E3A;&#x5DF2;&#x6709;&#x7684;&#x8868;&#x65B0;&#x589E;&#x5B57;&#x6BB5;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> demo <span class="token keyword">ADD</span> login_time <span class="token keyword">DATETIME</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CURRENT_TIMESTAMP</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x4FEE;&#x6539;&#x8868;&#x4E2D;&#x6307;&#x5B9A;&#x5B57;&#x6BB5;&#x7684;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> demo <span class="token keyword">MODIFY</span> login_time <span class="token keyword">TIMESTAMP</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">DEFAULT</span> <span class="token keyword">CURRENT_TIMESTAMP</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x4FEE;&#x6539;&#x8868;&#x4E2D;&#x6307;&#x5B9A;&#x5B57;&#x6BB5;&#x7684;&#x5B57;&#x6BB5;&#x540D;&#x4E0E;&#x6570;&#x636E;&#x7C7B;&#x578B;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> demo CHANGE login_time login_status <span class="token keyword">TINYINT</span> <span class="token keyword">UNSIGNED</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">DEFAULT</span> <span class="token number">0</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5220;&#x9664;&#x8868;&#x4E2D;&#x6307;&#x5B9A;&#x7684;&#x5B57;&#x6BB5;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> demo <span class="token keyword">DROP</span> login_status<span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x67E5;&#x8BE2;&#x6307;&#x5B9A;&#x8868;&#x7684;&#x7ED3;&#x6784;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">DESC</span> demo<span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x67E5;&#x8BE2;&#x6307;&#x5B9A;&#x8868;&#x7684;&#x5EFA;&#x8868;&#x8BED;&#x53E5;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SHOW</span> <span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> demo<span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x4FEE;&#x6539;&#x6307;&#x5B9A;&#x7684;&#x8868;&#x540D;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> demo <span class="token keyword">RENAME</span> <span class="token keyword">TO</span> user_login<span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5220;&#x9664;&#x6307;&#x5B9A;&#x7684;&#x8868;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">DROP</span> <span class="token keyword">TABLE</span> user_login<span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5F53;&#x8868;&#x5B58;&#x5728;&#x65F6;&#x624D;&#x6267;&#x884C;&#x5220;&#x9664;&#x64CD;&#x4F5C;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">DROP</span> <span class="token keyword">TABLE</span> <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span> user_login<span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5220;&#x9664;&#x6307;&#x5B9A;&#x7684;&#x8868;&#xFF0C;&#x5E76;&#x91CD;&#x65B0;&#x521B;&#x5EFA;&#x8BE5;&#x8868;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">TRUNCATE</span> <span class="token keyword">TABLE</span> user_login<span class="token punctuation">;</span>
+</code></pre>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="数据库操作.html" class="navigation navigation-prev " aria-label="Previous page: 数据库操作">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../DML.html" class="navigation navigation-next " aria-label="Next page: DML">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"表操作","level":"1.1.3.2","depth":3,"next":{"title":"DML","level":"1.1.4","depth":2,"path":"docs/DML.md","ref":"docs/DML.md","articles":[{"title":"添加数据","level":"1.1.4.1","depth":3,"path":"docs/DML/添加数据.md","ref":"docs/DML/添加数据.md","articles":[]},{"title":"修改数据","level":"1.1.4.2","depth":3,"path":"docs/DML/修改数据.md","ref":"docs/DML/修改数据.md","articles":[]},{"title":"删除数据","level":"1.1.4.3","depth":3,"path":"docs/DML/删除数据.md","ref":"docs/DML/删除数据.md","articles":[]}]},"previous":{"title":"数据库操作","level":"1.1.3.1","depth":3,"path":"docs/DDL/数据库操作.md","ref":"docs/DDL/数据库操作.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"MySQL","language":"zh-hans","gitbook":">=3.0.0","description":"MySQL 手册","direction":"ltr"},"file":{"path":"docs/DDL/表操作.md","mtime":"2026-08-19T11:31:08.212Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-08-19T15:20:15.766Z"},"basePath":"../..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../../gitbook/gitbook.js"></script>
+    <script src="../../gitbook/theme.js"></script>
+    
+        
+        <script src="../../gitbook/gitbook-plugin-back-to-top-button/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-chapter-fold/chapter-fold.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-hide-element/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-lightbox/js/lightbox.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/jquery.mark.min.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-search-pro/search.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-splitter/splitter.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
