@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>DCL · MySQL</title>
+        <title>子查询 · MySQL</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -74,10 +74,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="DCL/用户管理.html" />
+    <link rel="next" href="事务操作.html" />
     
     
-    <link rel="prev" href="DQL/分页查询.html" />
+    <link rel="prev" href="联合查询.html" />
     
 
     
@@ -350,7 +350,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.1.6" data-path="DCL.html">
+        <li class="chapter " data-level="1.1.6" data-path="DCL.html">
             
                 <a href="DCL.html">
             
@@ -505,7 +505,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.1.11" data-path="子查询.html">
+        <li class="chapter active" data-level="1.1.11" data-path="子查询.html">
             
                 <a href="子查询.html">
             
@@ -566,7 +566,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >DCL</a>
+        <a href=".." >子查询</a>
     </h1>
 </div>
 
@@ -581,11 +581,22 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="dcl">DCL</h1>
-<ul>
-<li><a href="DCL/&#x7528;&#x6237;&#x7BA1;&#x7406;.html">&#x7528;&#x6237;&#x7BA1;&#x7406;</a></li>
-<li><a href="DCL/&#x6743;&#x9650;&#x63A7;&#x5236;.html">&#x6743;&#x9650;&#x63A7;&#x5236;</a></li>
-</ul>
+                                <h1 id="&#x5B50;&#x67E5;&#x8BE2;">&#x5B50;&#x67E5;&#x8BE2;</h1>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x4F7F;&#x7528;&#x5D4C;&#x5957;&#x5B50;&#x67E5;&#x8BE2;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> user_order
+<span class="token keyword">WHERE</span> amount <span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token keyword">SELECT</span> <span class="token function">AVG</span><span class="token punctuation">(</span>amount<span class="token punctuation">)</span> <span class="token keyword">FROM</span> user_order<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x6309;&#x96C6;&#x5408;&#x8303;&#x56F4;&#x4F7F;&#x7528;&#x5D4C;&#x5957;&#x5B50;&#x67E5;&#x8BE2;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> <span class="token keyword">user</span>
+<span class="token keyword">WHERE</span> id <span class="token operator">IN</span> <span class="token punctuation">(</span><span class="token keyword">SELECT</span> <span class="token keyword">DISTINCT</span> user_id <span class="token keyword">FROM</span> user_order<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span>
+<span class="token keyword">FROM</span> user_order
+<span class="token keyword">WHERE</span> amount <span class="token operator">&gt;</span> <span class="token keyword">ANY</span> <span class="token punctuation">(</span><span class="token keyword">SELECT</span> amount <span class="token keyword">FROM</span> user_order <span class="token keyword">WHERE</span> user_id <span class="token operator">=</span> <span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
 
                                 
                                 </section>
@@ -613,12 +624,12 @@
 
             
                 
-                <a href="DQL/分页查询.html" class="navigation navigation-prev " aria-label="Previous page: 分页查询">
+                <a href="联合查询.html" class="navigation navigation-prev " aria-label="Previous page: 联合查询">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="DCL/用户管理.html" class="navigation navigation-next " aria-label="Next page: 用户管理">
+                <a href="事务操作.html" class="navigation navigation-next " aria-label="Next page: 事务操作">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -629,7 +640,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"DCL","level":"1.1.6","depth":2,"next":{"title":"用户管理","level":"1.1.6.1","depth":3,"path":"docs/DCL/用户管理.md","ref":"docs/DCL/用户管理.md","articles":[]},"previous":{"title":"分页查询","level":"1.1.5.5","depth":3,"path":"docs/DQL/分页查询.md","ref":"docs/DQL/分页查询.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"MySQL","language":"zh-hans","gitbook":">=3.0.0","description":"MySQL 手册","direction":"ltr"},"file":{"path":"docs/DCL.md","mtime":"2026-08-19T16:05:09.935Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-08-22T12:08:33.387Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"子查询","level":"1.1.11","depth":2,"next":{"title":"事务操作","level":"1.1.12","depth":2,"path":"docs/事务操作.md","ref":"docs/事务操作.md","articles":[]},"previous":{"title":"联合查询","level":"1.1.10","depth":2,"path":"docs/联合查询.md","ref":"docs/联合查询.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"MySQL","language":"zh-hans","gitbook":">=3.0.0","description":"MySQL 手册","direction":"ltr"},"file":{"path":"docs/子查询.md","mtime":"2026-08-22T12:03:04.828Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-08-22T12:08:33.387Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
