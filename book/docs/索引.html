@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>客户端连接 · MySQL</title>
+        <title>索引 · MySQL</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -74,10 +74,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="DDL.html" />
+    <link rel="next" href="性能分析.html" />
     
     
-    <link rel="prev" href="安装 MySQL.html" />
+    <link rel="prev" href="存储引擎.html" />
     
 
     
@@ -150,7 +150,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.1.2" data-path="客户端连接.html">
+        <li class="chapter " data-level="1.1.2" data-path="客户端连接.html">
             
                 <a href="客户端连接.html">
             
@@ -544,7 +544,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.1.14" data-path="索引.html">
+        <li class="chapter active" data-level="1.1.14" data-path="索引.html">
             
                 <a href="索引.html">
             
@@ -657,7 +657,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >客户端连接</a>
+        <a href=".." >索引</a>
     </h1>
 </div>
 
@@ -672,10 +672,34 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x5BA2;&#x6237;&#x7AEF;&#x8FDE;&#x63A5;">&#x5BA2;&#x6237;&#x7AEF;&#x8FDE;&#x63A5;</h1>
-<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x4F7F;&#x7528;&#x547D;&#x4EE4;&#x884C;&#x65B9;&#x5F0F;&#x8FDE;&#x63A5; MySQL &#x6570;&#x636E;&#x5E93;&#x670D;&#x52A1;&#x3002;</p>
-<pre class="language-"><code>mysql -u root -p
-</code></pre><p>&#x8F93;&#x5165;&#x5BC6;&#x7801;&#x786E;&#x8BA4;&#x540E;&#xFF0C;&#x5373;&#x53EF;&#x7F16;&#x5199; SQL &#x8BED;&#x53E5;&#x8FDB;&#x884C;&#x64CD;&#x4F5C;&#x3002;</p>
+                                <h1 id="&#x7D22;&#x5F15;">&#x7D22;&#x5F15;</h1>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x67E5;&#x770B;&#x6307;&#x5B9A;&#x8868;&#x7684;&#x6240;&#x6709;&#x7D22;&#x5F15;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SHOW</span> <span class="token keyword">INDEX</span> <span class="token keyword">FROM</span> <span class="token keyword">user</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x4E3A;&#x6307;&#x5B9A;&#x8868;&#x7684;&#x5B57;&#x6BB5;&#x6DFB;&#x52A0;&#x666E;&#x901A;&#x7D22;&#x5F15;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">INDEX</span> idx_name <span class="token keyword">ON</span> <span class="token keyword">user</span> <span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x4E3A;&#x6307;&#x5B9A;&#x8868;&#x7684;&#x5B57;&#x6BB5;&#x6DFB;&#x52A0;&#x552F;&#x4E00;&#x7D22;&#x5F15;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">UNIQUE</span> <span class="token keyword">INDEX</span> idx_name <span class="token keyword">ON</span> <span class="token keyword">user</span> <span class="token punctuation">(</span>name<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x4E3A;&#x6307;&#x5B9A;&#x8868;&#x7684;&#x5B57;&#x6BB5;&#x6DFB;&#x52A0;&#x8054;&#x5408;&#x7D22;&#x5F15;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">INDEX</span> idx_name_dept <span class="token keyword">ON</span> <span class="token keyword">user</span> <span class="token punctuation">(</span>name<span class="token punctuation">,</span> dept_id<span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x4E3A;&#x6307;&#x5B9A;&#x8868;&#x7684;&#x5B57;&#x6BB5;&#x6DFB;&#x52A0;&#x524D;&#x7F00;&#x7D22;&#x5F15;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">INDEX</span> idx_name_prefix <span class="token keyword">ON</span> <span class="token keyword">user</span> <span class="token punctuation">(</span>name<span class="token punctuation">(</span><span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5220;&#x9664;&#x6307;&#x5B9A;&#x8868;&#x7684;&#x7D22;&#x5F15;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">DROP</span> <span class="token keyword">INDEX</span> idx_name <span class="token keyword">ON</span> <span class="token keyword">user</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x6307;&#x5B9A;&#x7684;&#x7D22;&#x5F15;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> <span class="token keyword">user</span> <span class="token keyword">USE</span> <span class="token keyword">INDEX</span> <span class="token punctuation">(</span>idx_name<span class="token punctuation">)</span> <span class="token keyword">WHERE</span> name <span class="token operator">=</span> <span class="token string">&apos;Tom&apos;</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5FFD;&#x7565;&#x6307;&#x5B9A;&#x7684;&#x7D22;&#x5F15;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">EXPLAIN</span> <span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> <span class="token keyword">user</span> <span class="token keyword">IGNORE</span> <span class="token keyword">INDEX</span> <span class="token punctuation">(</span>idx_name<span class="token punctuation">)</span> <span class="token keyword">WHERE</span> name <span class="token operator">=</span> <span class="token string">&apos;Tom&apos;</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5F3A;&#x5236;&#x4F7F;&#x7528;&#x6307;&#x5B9A;&#x7684;&#x7D22;&#x5F15;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">EXPLAIN</span> <span class="token keyword">SELECT</span> <span class="token operator">*</span> <span class="token keyword">FROM</span> <span class="token keyword">user</span> <span class="token keyword">FORCE</span> <span class="token keyword">INDEX</span> <span class="token punctuation">(</span>idx_name<span class="token punctuation">)</span> <span class="token keyword">WHERE</span> name <span class="token operator">=</span> <span class="token string">&apos;Tom&apos;</span><span class="token punctuation">;</span>
+</code></pre>
 
                                 
                                 </section>
@@ -703,12 +727,12 @@
 
             
                 
-                <a href="安装 MySQL.html" class="navigation navigation-prev " aria-label="Previous page: 安装 MySQL">
+                <a href="存储引擎.html" class="navigation navigation-prev " aria-label="Previous page: 存储引擎">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="DDL.html" class="navigation navigation-next " aria-label="Next page: DDL">
+                <a href="性能分析.html" class="navigation navigation-next " aria-label="Next page: 性能分析">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -719,7 +743,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"客户端连接","level":"1.1.2","depth":2,"next":{"title":"DDL","level":"1.1.3","depth":2,"path":"docs/DDL.md","ref":"docs/DDL.md","articles":[{"title":"数据库操作","level":"1.1.3.1","depth":3,"path":"docs/DDL/数据库操作.md","ref":"docs/DDL/数据库操作.md","articles":[]},{"title":"表操作","level":"1.1.3.2","depth":3,"path":"docs/DDL/表操作.md","ref":"docs/DDL/表操作.md","articles":[]}]},"previous":{"title":"安装 MySQL","level":"1.1.1","depth":2,"path":"docs/安装 MySQL.md","ref":"docs/安装 MySQL.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"MySQL","language":"zh-hans","gitbook":">=3.0.0","description":"MySQL 手册","direction":"ltr"},"file":{"path":"docs/客户端连接.md","mtime":"2026-08-07T13:22:45.809Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-08-25T14:00:00.282Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"索引","level":"1.1.14","depth":2,"next":{"title":"性能分析","level":"1.1.15","depth":2,"path":"docs/性能分析.md","ref":"docs/性能分析.md","articles":[]},"previous":{"title":"存储引擎","level":"1.1.13","depth":2,"path":"docs/存储引擎.md","ref":"docs/存储引擎.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"MySQL","language":"zh-hans","gitbook":">=3.0.0","description":"MySQL 手册","direction":"ltr"},"file":{"path":"docs/索引.md","mtime":"2026-08-25T13:46:11.450Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-08-25T14:00:00.282Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
