@@ -716,6 +716,69 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="&#x89E6;&#x53D1;&#x5668;">&#x89E6;&#x53D1;&#x5668;</h1>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x67E5;&#x770B;&#x6240;&#x6709;&#x7684;&#x89E6;&#x53D1;&#x5668;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SHOW</span> TRIGGERS<span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5728;&#x63D2;&#x5165;&#x6570;&#x636E;&#x4E4B;&#x524D;&#x81EA;&#x52A8;&#x6267;&#x884C;&#x76F8;&#x5173;&#x7684; SQL &#x8BED;&#x53E5;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TRIGGER</span> tri_user_before_insert
+BEFORE <span class="token keyword">INSERT</span>
+<span class="token keyword">ON</span> <span class="token keyword">user</span>
+<span class="token keyword">FOR EACH ROW</span>
+<span class="token keyword">BEGIN</span>
+    <span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> user_log <span class="token punctuation">(</span><span class="token keyword">action</span><span class="token punctuation">)</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">&apos;BEFORE INSERT&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">END</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5728;&#x63D2;&#x5165;&#x6570;&#x636E;&#x4E4B;&#x540E;&#x81EA;&#x52A8;&#x6267;&#x884C;&#x76F8;&#x5173;&#x7684; SQL &#x8BED;&#x53E5;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TRIGGER</span> tri_user_after_insert
+<span class="token keyword">AFTER</span> <span class="token keyword">INSERT</span>
+<span class="token keyword">ON</span> <span class="token keyword">user</span>
+<span class="token keyword">FOR EACH ROW</span>
+<span class="token keyword">BEGIN</span>
+    <span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> user_log <span class="token punctuation">(</span><span class="token keyword">action</span><span class="token punctuation">)</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span>CONCAT<span class="token punctuation">(</span><span class="token string">&apos;AFTER INSERT &apos;</span><span class="token punctuation">,</span> NEW<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">END</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5728;&#x66F4;&#x65B0;&#x6570;&#x636E;&#x4E4B;&#x524D;&#x81EA;&#x52A8;&#x6267;&#x884C;&#x76F8;&#x5173;&#x7684; SQL &#x8BED;&#x53E5;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TRIGGER</span> tri_user_before_update
+BEFORE <span class="token keyword">UPDATE</span>
+<span class="token keyword">ON</span> <span class="token keyword">user</span>
+<span class="token keyword">FOR EACH ROW</span>
+<span class="token keyword">BEGIN</span>
+    <span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> user_log <span class="token punctuation">(</span><span class="token keyword">action</span><span class="token punctuation">)</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span>CONCAT<span class="token punctuation">(</span><span class="token string">&apos;BEFORE UPDATE &apos;</span><span class="token punctuation">,</span> OLD<span class="token punctuation">.</span>name<span class="token punctuation">,</span> <span class="token string">&apos; -&gt; &apos;</span><span class="token punctuation">,</span> NEW<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">END</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5728;&#x66F4;&#x65B0;&#x6570;&#x636E;&#x4E4B;&#x540E;&#x81EA;&#x52A8;&#x6267;&#x884C;&#x76F8;&#x5173; SQL &#x8BED;&#x53E5;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TRIGGER</span> tri_user_after_update
+<span class="token keyword">AFTER</span> <span class="token keyword">UPDATE</span>
+<span class="token keyword">ON</span> <span class="token keyword">user</span>
+<span class="token keyword">FOR EACH ROW</span>
+<span class="token keyword">BEGIN</span>
+    <span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> user_log <span class="token punctuation">(</span><span class="token keyword">action</span><span class="token punctuation">)</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span>CONCAT<span class="token punctuation">(</span><span class="token string">&apos;AFTER UPDATE &apos;</span><span class="token punctuation">,</span> OLD<span class="token punctuation">.</span>name<span class="token punctuation">,</span> <span class="token string">&apos; -&gt; &apos;</span><span class="token punctuation">,</span> NEW<span class="token punctuation">.</span>name<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">END</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5728;&#x5220;&#x9664;&#x6570;&#x636E;&#x4E4B;&#x524D;&#x81EA;&#x52A8;&#x6267;&#x884C;&#x76F8;&#x5173; SQL &#x8BED;&#x53E5;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TRIGGER</span> tri_user_before_delete
+BEFORE <span class="token keyword">DELETE</span>
+<span class="token keyword">ON</span> <span class="token keyword">user</span>
+<span class="token keyword">FOR EACH ROW</span>
+<span class="token keyword">BEGIN</span>
+    <span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> user_log <span class="token punctuation">(</span><span class="token keyword">action</span><span class="token punctuation">)</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span>CONCAT<span class="token punctuation">(</span><span class="token string">&apos;BEFORE DELETE &apos;</span><span class="token punctuation">,</span> OLD<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">END</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5728;&#x5220;&#x9664;&#x6570;&#x636E;&#x4E4B;&#x540E;&#x81EA;&#x52A8;&#x6267;&#x884C;&#x76F8;&#x5173; SQL &#x8BED;&#x53E5;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TRIGGER</span> tri_user_after_delete
+<span class="token keyword">AFTER</span> <span class="token keyword">DELETE</span>
+<span class="token keyword">ON</span> <span class="token keyword">user</span>
+<span class="token keyword">FOR EACH ROW</span>
+<span class="token keyword">BEGIN</span>
+    <span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> user_log <span class="token punctuation">(</span><span class="token keyword">action</span><span class="token punctuation">)</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span>CONCAT<span class="token punctuation">(</span><span class="token string">&apos;AFTER DELETE &apos;</span><span class="token punctuation">,</span> OLD<span class="token punctuation">.</span>id<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">END</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5220;&#x9664;&#x6307;&#x5B9A;&#x7684;&#x89E6;&#x53D1;&#x5668;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">DROP</span> <span class="token keyword">TRIGGER</span> tri_user_before_insert<span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5F53;&#x89E6;&#x53D1;&#x5668;&#x5B58;&#x5728;&#x65F6;&#x624D;&#x6267;&#x884C;&#x5220;&#x9664;&#x64CD;&#x4F5C;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">DROP</span> <span class="token keyword">TRIGGER</span> <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span> tri_user_before_insert<span class="token punctuation">;</span>
+</code></pre>
 
                                 
                                 </section>
@@ -755,7 +818,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"触发器","level":"1.1.17","depth":2,"previous":{"title":"存储函数","level":"1.1.16","depth":2,"path":"docs/存储函数.md","ref":"docs/存储函数.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"MySQL","language":"zh-hans","gitbook":">=3.0.0","description":"MySQL 手册","direction":"ltr"},"file":{"path":"docs/触发器.md","mtime":"2026-08-22T12:32:28.611Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-08-25T17:06:45.010Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"触发器","level":"1.1.17","depth":2,"previous":{"title":"存储函数","level":"1.1.16","depth":2,"path":"docs/存储函数.md","ref":"docs/存储函数.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"MySQL","language":"zh-hans","gitbook":">=3.0.0","description":"MySQL 手册","direction":"ltr"},"file":{"path":"docs/触发器.md","mtime":"2026-08-26T15:10:32.175Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-08-26T15:10:38.304Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

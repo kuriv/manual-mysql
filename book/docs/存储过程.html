@@ -739,6 +739,100 @@
 <p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5F53;&#x5B58;&#x50A8;&#x8FC7;&#x7A0B;&#x5B58;&#x5728;&#x65F6;&#x624D;&#x6267;&#x884C;&#x5220;&#x9664;&#x64CD;&#x4F5C;&#x3002;</p>
 <pre class="language-"><code class="lang-sql"><span class="token keyword">DROP</span> <span class="token keyword">PROCEDURE</span> <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span> func<span class="token punctuation">;</span>
 </code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5728;&#x5B58;&#x50A8;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F7F;&#x7528;&#x5C40;&#x90E8;&#x53D8;&#x91CF;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">BEGIN</span>
+    <span class="token keyword">DECLARE</span> count <span class="token keyword">INT</span> <span class="token keyword">UNSIGNED</span> <span class="token keyword">DEFAULT</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">SELECT</span> <span class="token function">COUNT</span><span class="token punctuation">(</span><span class="token operator">*</span><span class="token punctuation">)</span> <span class="token keyword">INTO</span> count <span class="token keyword">FROM</span> <span class="token keyword">user</span><span class="token punctuation">;</span>
+    <span class="token keyword">SELECT</span> count<span class="token punctuation">;</span>
+<span class="token keyword">END</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5728;&#x5B58;&#x50A8;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F7F;&#x7528;&#x6761;&#x4EF6;&#x5224;&#x65AD;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">BEGIN</span>
+    <span class="token keyword">DECLARE</span> score <span class="token keyword">INT</span> <span class="token keyword">UNSIGNED</span> <span class="token keyword">DEFAULT</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">DECLARE</span> result <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">SET</span> score :<span class="token operator">=</span> <span class="token number">90</span><span class="token punctuation">;</span>
+    <span class="token keyword">IF</span> score <span class="token operator">&gt;=</span> <span class="token number">90</span> <span class="token keyword">THEN</span>
+        <span class="token keyword">SET</span> result :<span class="token operator">=</span> <span class="token string">&apos;Excellent&apos;</span><span class="token punctuation">;</span>
+    <span class="token keyword">ELSEIF</span> score <span class="token operator">&gt;=</span> <span class="token number">60</span> <span class="token keyword">THEN</span>
+        <span class="token keyword">SET</span> result :<span class="token operator">=</span> <span class="token string">&apos;Pass&apos;</span><span class="token punctuation">;</span>
+    <span class="token keyword">ELSE</span>
+        <span class="token keyword">SET</span> result :<span class="token operator">=</span> <span class="token string">&apos;Fail&apos;</span><span class="token punctuation">;</span>
+    <span class="token keyword">END</span> <span class="token keyword">IF</span><span class="token punctuation">;</span>
+    <span class="token keyword">SELECT</span> result<span class="token punctuation">;</span>
+<span class="token keyword">END</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5728;&#x5B58;&#x50A8;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F7F;&#x7528;&#x5206;&#x652F;&#x5224;&#x65AD;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">BEGIN</span>
+    <span class="token keyword">DECLARE</span> score <span class="token keyword">INT</span> <span class="token keyword">UNSIGNED</span> <span class="token keyword">DEFAULT</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">DECLARE</span> result <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+    <span class="token keyword">SET</span> score :<span class="token operator">=</span> <span class="token number">90</span><span class="token punctuation">;</span>
+    <span class="token keyword">CASE</span>
+        <span class="token keyword">WHEN</span> score <span class="token operator">&gt;=</span> <span class="token number">90</span> <span class="token keyword">THEN</span>
+            <span class="token keyword">SET</span> result :<span class="token operator">=</span> <span class="token string">&apos;Excellent&apos;</span><span class="token punctuation">;</span>
+        <span class="token keyword">WHEN</span> score <span class="token operator">&gt;=</span> <span class="token number">60</span> <span class="token keyword">THEN</span>
+            <span class="token keyword">SET</span> result :<span class="token operator">=</span> <span class="token string">&apos;Pass&apos;</span><span class="token punctuation">;</span>
+        <span class="token keyword">ELSE</span>
+            <span class="token keyword">SET</span> result :<span class="token operator">=</span> <span class="token string">&apos;Fail&apos;</span><span class="token punctuation">;</span>
+    <span class="token keyword">END</span> <span class="token keyword">CASE</span><span class="token punctuation">;</span>
+    <span class="token keyword">SELECT</span> result<span class="token punctuation">;</span>
+<span class="token keyword">END</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5728;&#x5B58;&#x50A8;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F7F;&#x7528;&#x5FAA;&#x73AF;&#x63A7;&#x5236;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">BEGIN</span>
+    <span class="token keyword">DECLARE</span> num <span class="token keyword">INT</span> <span class="token keyword">UNSIGNED</span> <span class="token keyword">DEFAULT</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">DECLARE</span> sum <span class="token keyword">INT</span> <span class="token keyword">UNSIGNED</span> <span class="token keyword">DEFAULT</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">SET</span> num :<span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">WHILE</span> num <span class="token operator">&gt;</span> <span class="token number">0</span> <span class="token keyword">DO</span>
+        <span class="token keyword">SET</span> sum :<span class="token operator">=</span> sum <span class="token operator">+</span> num<span class="token punctuation">;</span>
+        <span class="token keyword">SET</span> num :<span class="token operator">=</span> num <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    <span class="token keyword">END</span> <span class="token keyword">WHILE</span><span class="token punctuation">;</span>
+    <span class="token keyword">SELECT</span> sum<span class="token punctuation">;</span>
+<span class="token keyword">END</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5728;&#x5B58;&#x50A8;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F7F;&#x7528;&#x53E6;&#x4E00;&#x79CD;&#x5FAA;&#x73AF;&#x63A7;&#x5236;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> func<span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">BEGIN</span>
+    <span class="token keyword">DECLARE</span> num <span class="token keyword">INT</span> <span class="token keyword">UNSIGNED</span> <span class="token keyword">DEFAULT</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">DECLARE</span> sum <span class="token keyword">INT</span> <span class="token keyword">UNSIGNED</span> <span class="token keyword">DEFAULT</span> <span class="token number">0</span><span class="token punctuation">;</span>
+    <span class="token keyword">SET</span> num :<span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+    <span class="token keyword">REPEAT</span>
+        <span class="token keyword">SET</span> sum :<span class="token operator">=</span> sum <span class="token operator">+</span> num<span class="token punctuation">;</span>
+        <span class="token keyword">SET</span> num :<span class="token operator">=</span> num <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">;</span>
+    UNTIL num <span class="token operator">&lt;=</span> <span class="token number">0</span>
+    <span class="token keyword">END</span> <span class="token keyword">REPEAT</span><span class="token punctuation">;</span>
+    <span class="token keyword">SELECT</span> sum<span class="token punctuation">;</span>
+<span class="token keyword">END</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5728;&#x5B58;&#x50A8;&#x8FC7;&#x7A0B;&#x4E2D;&#x5206;&#x522B;&#x4F7F;&#x7528;&#x8F93;&#x5165;&#x53C2;&#x6570;&#x548C;&#x8F93;&#x51FA;&#x53C2;&#x6570;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> func<span class="token punctuation">(</span><span class="token operator">IN</span> score <span class="token keyword">INT</span><span class="token punctuation">,</span> <span class="token keyword">OUT</span> result <span class="token keyword">VARCHAR</span><span class="token punctuation">(</span><span class="token number">10</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token keyword">BEGIN</span>
+    <span class="token keyword">IF</span> score <span class="token operator">&gt;=</span> <span class="token number">90</span> <span class="token keyword">THEN</span>
+        <span class="token keyword">SET</span> result :<span class="token operator">=</span> <span class="token string">&apos;Excellent&apos;</span><span class="token punctuation">;</span>
+    <span class="token keyword">ELSEIF</span> score <span class="token operator">&gt;=</span> <span class="token number">60</span> <span class="token keyword">THEN</span>
+        <span class="token keyword">SET</span> result :<span class="token operator">=</span> <span class="token string">&apos;Pass&apos;</span><span class="token punctuation">;</span>
+    <span class="token keyword">ELSE</span>
+        <span class="token keyword">SET</span> result :<span class="token operator">=</span> <span class="token string">&apos;Fail&apos;</span><span class="token punctuation">;</span>
+    <span class="token keyword">END</span> <span class="token keyword">IF</span><span class="token punctuation">;</span>
+<span class="token keyword">END</span><span class="token punctuation">;</span>
+
+<span class="token keyword">SET</span> <span class="token variable">@result</span> <span class="token operator">=</span> <span class="token string">&apos;&apos;</span><span class="token punctuation">;</span>
+<span class="token keyword">CALL</span> func<span class="token punctuation">(</span><span class="token number">88</span><span class="token punctuation">,</span> <span class="token variable">@result</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> <span class="token variable">@result</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5728;&#x5B58;&#x50A8;&#x8FC7;&#x7A0B;&#x4E2D;&#x4F7F;&#x7528;&#x8F93;&#x5165;&#x8F93;&#x51FA;&#x53C2;&#x6570;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">PROCEDURE</span> func<span class="token punctuation">(</span><span class="token keyword">INOUT</span> num <span class="token keyword">INT</span><span class="token punctuation">)</span>
+<span class="token keyword">BEGIN</span>
+    <span class="token keyword">SET</span> num :<span class="token operator">=</span> num <span class="token operator">*</span> num<span class="token punctuation">;</span>
+<span class="token keyword">END</span><span class="token punctuation">;</span>
+
+<span class="token keyword">SET</span> <span class="token variable">@num</span> <span class="token operator">=</span> <span class="token number">10</span><span class="token punctuation">;</span>
+<span class="token keyword">CALL</span> func<span class="token punctuation">(</span><span class="token variable">@num</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+<span class="token keyword">SELECT</span> <span class="token variable">@num</span><span class="token punctuation">;</span>
+</code></pre>
 
                                 
                                 </section>
@@ -782,7 +876,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"存储过程","level":"1.1.15","depth":2,"next":{"title":"存储函数","level":"1.1.16","depth":2,"path":"docs/存储函数.md","ref":"docs/存储函数.md","articles":[]},"previous":{"title":"视图","level":"1.1.14","depth":2,"path":"docs/视图.md","ref":"docs/视图.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"MySQL","language":"zh-hans","gitbook":">=3.0.0","description":"MySQL 手册","direction":"ltr"},"file":{"path":"docs/存储过程.md","mtime":"2026-08-25T15:02:26.736Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-08-25T17:06:45.010Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"存储过程","level":"1.1.15","depth":2,"next":{"title":"存储函数","level":"1.1.16","depth":2,"path":"docs/存储函数.md","ref":"docs/存储函数.md","articles":[]},"previous":{"title":"视图","level":"1.1.14","depth":2,"path":"docs/视图.md","ref":"docs/视图.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"MySQL","language":"zh-hans","gitbook":">=3.0.0","description":"MySQL 手册","direction":"ltr"},"file":{"path":"docs/存储过程.md","mtime":"2026-08-26T11:56:51.720Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-08-26T15:10:38.304Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
