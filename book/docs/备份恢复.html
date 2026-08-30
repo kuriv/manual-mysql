@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>DQL · MySQL</title>
+        <title>备份恢复 · MySQL</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -74,10 +74,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="DQL/基本查询.html" />
+    <link rel="next" href="主从复制.html" />
     
     
-    <link rel="prev" href="DML/删除数据.html" />
+    <link rel="prev" href="日志.html" />
     
 
     
@@ -266,7 +266,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.1.5" data-path="DQL.html">
+        <li class="chapter " data-level="1.1.5" data-path="DQL.html">
             
                 <a href="DQL.html">
             
@@ -693,7 +693,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.1.20" data-path="备份恢复.html">
+        <li class="chapter active" data-level="1.1.20" data-path="备份恢复.html">
             
                 <a href="备份恢复.html">
             
@@ -780,7 +780,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >DQL</a>
+        <a href=".." >备份恢复</a>
     </h1>
 </div>
 
@@ -795,17 +795,14 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="dql">DQL</h1>
-<ul>
-<li><a href="DQL/&#x57FA;&#x672C;&#x67E5;&#x8BE2;.html">&#x57FA;&#x672C;&#x67E5;&#x8BE2;</a></li>
-<li><a href="DQL/&#x805A;&#x5408;&#x51FD;&#x6570;.html">&#x805A;&#x5408;&#x51FD;&#x6570;</a></li>
-<li><a href="DQL/&#x5206;&#x7EC4;&#x67E5;&#x8BE2;.html">&#x5206;&#x7EC4;&#x67E5;&#x8BE2;</a></li>
-<li><a href="DQL/&#x6392;&#x5E8F;&#x67E5;&#x8BE2;.html">&#x6392;&#x5E8F;&#x67E5;&#x8BE2;</a></li>
-<li><a href="DQL/&#x5206;&#x9875;&#x67E5;&#x8BE2;.html">&#x5206;&#x9875;&#x67E5;&#x8BE2;</a></li>
-<li><a href="DQL/&#x8FDE;&#x63A5;&#x67E5;&#x8BE2;.html">&#x8FDE;&#x63A5;&#x67E5;&#x8BE2;</a></li>
-<li><a href="DQL/&#x8054;&#x5408;&#x67E5;&#x8BE2;.html">&#x8054;&#x5408;&#x67E5;&#x8BE2;</a></li>
-<li><a href="DQL/&#x5B50;&#x67E5;&#x8BE2;.html">&#x5B50;&#x67E5;&#x8BE2;</a></li>
-</ul>
+                                <h1 id="&#x5907;&#x4EFD;&#x6062;&#x590D;">&#x5907;&#x4EFD;&#x6062;&#x590D;</h1>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x5907;&#x4EFD;&#x6307;&#x5B9A;&#x7684;&#x6570;&#x636E;&#x5E93;&#x3002;</p>
+<pre class="language-"><code>mysqldump -u root -p --databases demo &gt; demo.sql
+</code></pre><p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684;&#x547D;&#x4EE4;&#xFF0C;&#x6062;&#x590D;&#x6307;&#x5B9A;&#x7684;&#x6570;&#x636E;&#x5E93;&#x3002;</p>
+<pre class="language-"><code>mysql -u root -p &lt; demo.sql
+</code></pre><p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x6062;&#x590D;&#x6307;&#x5B9A;&#x7684;&#x6570;&#x636E;&#x5E93;&#x3002;</p>
+<pre class="language-"><code class="lang-sql">SOURCE demo<span class="token punctuation">.</span><span class="token keyword">sql</span><span class="token punctuation">;</span>
+</code></pre>
 
                                 
                                 </section>
@@ -833,12 +830,12 @@
 
             
                 
-                <a href="DML/删除数据.html" class="navigation navigation-prev " aria-label="Previous page: 删除数据">
+                <a href="日志.html" class="navigation navigation-prev " aria-label="Previous page: 日志">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="DQL/基本查询.html" class="navigation navigation-next " aria-label="Next page: 基本查询">
+                <a href="主从复制.html" class="navigation navigation-next " aria-label="Next page: 主从复制">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -849,7 +846,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"DQL","level":"1.1.5","depth":2,"next":{"title":"基本查询","level":"1.1.5.1","depth":3,"path":"docs/DQL/基本查询.md","ref":"docs/DQL/基本查询.md","articles":[]},"previous":{"title":"删除数据","level":"1.1.4.3","depth":3,"path":"docs/DML/删除数据.md","ref":"docs/DML/删除数据.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"MySQL","language":"zh-hans","gitbook":">=3.0.0","description":"MySQL 手册","direction":"ltr"},"file":{"path":"docs/DQL.md","mtime":"2026-08-25T15:20:29.483Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-08-30T18:03:40.368Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"备份恢复","level":"1.1.20","depth":2,"next":{"title":"主从复制","level":"1.1.21","depth":2,"path":"docs/主从复制.md","ref":"docs/主从复制.md","articles":[]},"previous":{"title":"日志","level":"1.1.19","depth":2,"path":"docs/日志.md","ref":"docs/日志.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"MySQL","language":"zh-hans","gitbook":">=3.0.0","description":"MySQL 手册","direction":"ltr"},"file":{"path":"docs/备份恢复.md","mtime":"2026-08-30T18:03:25.865Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-08-30T18:03:40.368Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
