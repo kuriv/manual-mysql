@@ -19,6 +19,7 @@
         * [连接查询](docs/DQL/连接查询.md)
         * [联合查询](docs/DQL/联合查询.md)
         * [子查询](docs/DQL/子查询.md)
+        * [全文检索](docs/DQL/全文检索.md)
     * [DCL](docs/DCL.md)
         * [用户管理](docs/DCL/用户管理.md)
         * [权限控制](docs/DCL/权限控制.md)
@@ -39,10 +40,13 @@
     * [存储过程](docs/存储过程.md)
     * [存储函数](docs/存储函数.md)
     * [触发器](docs/触发器.md)
+    * [定时器](docs/定时器.md)
     * [锁](docs/锁.md)
     * [日志](docs/日志.md)
     * [备份恢复](docs/备份恢复.md)
     * [主从复制](docs/主从复制.md)
     * [分库分表](docs/分库分表.md)
     * [读写分离](docs/读写分离.md)
+    * [性能测试]
+    * [配置文件]
 

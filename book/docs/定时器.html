@@ -4,7 +4,7 @@
     <head>
         <meta charset="UTF-8">
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
-        <title>存储引擎 · MySQL</title>
+        <title>定时器 · MySQL</title>
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="description" content="">
         <meta name="generator" content="GitBook 3.2.3">
@@ -74,10 +74,10 @@
     <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="索引.html" />
+    <link rel="next" href="锁.html" />
     
     
-    <link rel="prev" href="事务操作.html" />
+    <link rel="prev" href="触发器.html" />
     
 
     
@@ -589,7 +589,7 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.1.11" data-path="存储引擎.html">
+        <li class="chapter " data-level="1.1.11" data-path="存储引擎.html">
             
                 <a href="存储引擎.html">
             
@@ -680,7 +680,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.1.18" data-path="定时器.html">
+        <li class="chapter active" data-level="1.1.18" data-path="定时器.html">
             
                 <a href="定时器.html">
             
@@ -832,7 +832,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href=".." >存储引擎</a>
+        <a href=".." >定时器</a>
     </h1>
 </div>
 
@@ -847,18 +847,41 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="&#x5B58;&#x50A8;&#x5F15;&#x64CE;">&#x5B58;&#x50A8;&#x5F15;&#x64CE;</h1>
-<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x67E5;&#x770B;&#x5F53;&#x524D;&#x6570;&#x636E;&#x5E93;&#x652F;&#x6301;&#x7684;&#x5B58;&#x50A8;&#x5F15;&#x64CE;&#x3002;</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">SHOW</span> ENGINES<span class="token punctuation">;</span>
+                                <h1 id="&#x5B9A;&#x65F6;&#x5668;">&#x5B9A;&#x65F6;&#x5668;</h1>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x67E5;&#x770B;&#x6240;&#x6709;&#x7684;&#x5B9A;&#x65F6;&#x5668;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SHOW</span> EVENTS<span class="token punctuation">;</span>
 </code></pre>
-<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x521B;&#x5EFA;&#x8868;&#x5E76;&#x6307;&#x5B9A;&#x5B58;&#x50A8;&#x5F15;&#x64CE;&#x3002;</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> <span class="token keyword">TABLE</span> demo <span class="token punctuation">(</span>
-    id <span class="token keyword">INT</span> <span class="token keyword">UNSIGNED</span> <span class="token keyword">PRIMARY</span> <span class="token keyword">KEY</span> <span class="token keyword">AUTO_INCREMENT</span><span class="token punctuation">,</span>
-    name <span class="token keyword">varchar</span><span class="token punctuation">(</span><span class="token number">20</span><span class="token punctuation">)</span> <span class="token operator">NOT</span> <span class="token boolean">NULL</span> <span class="token keyword">UNIQUE</span>
-<span class="token punctuation">)</span> <span class="token keyword">ENGINE</span> <span class="token operator">=</span> <span class="token keyword">InnoDB</span><span class="token punctuation">;</span>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x67E5;&#x770B;&#x5B9A;&#x65F6;&#x5668;&#x5F00;&#x542F;&#x72B6;&#x6001;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SELECT</span> @<span class="token variable">@global.event_scheduler</span><span class="token punctuation">;</span>
 </code></pre>
-<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x4FEE;&#x6539;&#x6307;&#x5B9A;&#x8868;&#x7684;&#x5B58;&#x50A8;&#x5F15;&#x64CE;&#x3002;</p>
-<pre class="language-"><code class="lang-sql"><span class="token keyword">ALTER</span> <span class="token keyword">TABLE</span> demo <span class="token keyword">ENGINE</span> <span class="token operator">=</span> <span class="token keyword">InnoDB</span><span class="token punctuation">;</span>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x4E34;&#x65F6;&#x5F00;&#x542F;&#x5B9A;&#x65F6;&#x5668;&#xFF0C;&#x53EF;&#x4EE5;&#x5728;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x4E2D;&#x8FDB;&#x884C;&#x8BBE;&#x7F6E;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">SET</span> @<span class="token variable">@global.event_scheduler</span> <span class="token operator">=</span> <span class="token keyword">ON</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x521B;&#x5EFA;&#x4E00;&#x6B21;&#x6027;&#x5B9A;&#x65F6;&#x5668;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> EVENT demo
+<span class="token keyword">ON</span> SCHEDULE AT <span class="token function">NOW</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token keyword">INTERVAL</span> <span class="token number">1</span> <span class="token keyword">MINUTE</span>
+<span class="token keyword">DO</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> event_log <span class="token punctuation">(</span>message<span class="token punctuation">)</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">&apos;EVENT ONCE&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x521B;&#x5EFA;&#x5FAA;&#x73AF;&#x5B9A;&#x65F6;&#x5668;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">CREATE</span> EVENT demo
+<span class="token keyword">ON</span> SCHEDULE EVERY <span class="token number">10</span> <span class="token keyword">SECOND</span>
+STARTS <span class="token function">NOW</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+ENDS <span class="token function">NOW</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">+</span> <span class="token keyword">INTERVAL</span> <span class="token number">1</span> <span class="token keyword">MINUTE</span>
+<span class="token keyword">DO</span>
+<span class="token keyword">INSERT</span> <span class="token keyword">INTO</span> event_log <span class="token punctuation">(</span>message<span class="token punctuation">)</span> <span class="token keyword">VALUES</span> <span class="token punctuation">(</span><span class="token string">&apos;EVENT LOOP&apos;</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x542F;&#x7528;&#x6307;&#x5B9A;&#x7684;&#x5B9A;&#x65F6;&#x5668;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">ALTER</span> EVENT demo <span class="token keyword">ENABLE</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x7981;&#x7528;&#x6307;&#x5B9A;&#x7684;&#x5B9A;&#x65F6;&#x5668;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">ALTER</span> EVENT demo <span class="token keyword">DISABLE</span><span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5220;&#x9664;&#x6307;&#x5B9A;&#x7684;&#x5B9A;&#x65F6;&#x5668;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">DROP</span> EVENT demo<span class="token punctuation">;</span>
+</code></pre>
+<p>&#x6267;&#x884C;&#x4E0B;&#x9762;&#x7684; SQL &#x8BED;&#x53E5;&#xFF0C;&#x5F53;&#x5B9A;&#x65F6;&#x5668;&#x5B58;&#x5728;&#x65F6;&#x624D;&#x6267;&#x884C;&#x5220;&#x9664;&#x64CD;&#x4F5C;&#x3002;</p>
+<pre class="language-"><code class="lang-sql"><span class="token keyword">DROP</span> EVENT <span class="token keyword">IF</span> <span class="token keyword">EXISTS</span> demo<span class="token punctuation">;</span>
 </code></pre>
 
                                 
@@ -887,12 +910,12 @@
 
             
                 
-                <a href="事务操作.html" class="navigation navigation-prev " aria-label="Previous page: 事务操作">
+                <a href="触发器.html" class="navigation navigation-prev " aria-label="Previous page: 触发器">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="索引.html" class="navigation navigation-next " aria-label="Next page: 索引">
+                <a href="锁.html" class="navigation navigation-next " aria-label="Next page: 锁">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -903,7 +926,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"存储引擎","level":"1.1.11","depth":2,"next":{"title":"索引","level":"1.1.12","depth":2,"path":"docs/索引.md","ref":"docs/索引.md","articles":[]},"previous":{"title":"事务操作","level":"1.1.10","depth":2,"path":"docs/事务操作.md","ref":"docs/事务操作.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"MySQL","language":"zh-hans","gitbook":">=3.0.0","description":"MySQL 手册","direction":"ltr"},"file":{"path":"docs/存储引擎.md","mtime":"2026-08-23T16:26:41.294Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-09-25T17:16:55.544Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"定时器","level":"1.1.18","depth":2,"next":{"title":"锁","level":"1.1.19","depth":2,"path":"docs/锁.md","ref":"docs/锁.md","articles":[]},"previous":{"title":"触发器","level":"1.1.17","depth":2,"path":"docs/触发器.md","ref":"docs/触发器.md","articles":[]},"dir":"ltr"},"config":{"plugins":["back-to-top-button","chapter-fold","favicon","hide-element","lightbox","-highlight","prism","-lunr","-search","search-pro","splitter","livereload"],"root":"","styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"chapter-fold":{},"prism":{"css":["prismjs/themes/prism-okaidia.css"]},"livereload":{},"splitter":{},"search-pro":{},"hide-element":{"elements":[".gitbook-link"]},"fontsettings":{"theme":"white","family":"sans","size":2},"favicon":{"shortcut":"favicon.ico","bookmark":"favicon.ico","appleTouch":"favicon.png","appleTouchMore":{"120x120":"favicon-120x120.png","180x180":"favicon-180x180.png"}},"lightbox":{"jquery":true,"sameUuid":false},"back-to-top-button":{},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Kuriv Vesti","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"isbn":"","variables":{},"title":"MySQL","language":"zh-hans","gitbook":">=3.0.0","description":"MySQL 手册","direction":"ltr"},"file":{"path":"docs/定时器.md","mtime":"2026-09-25T15:26:28.586Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2026-09-25T17:16:55.544Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>

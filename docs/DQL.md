@@ -8,3 +8,4 @@
 * [连接查询](/docs/DQL/连接查询.html)
 * [联合查询](/docs/DQL/联合查询.html)
 * [子查询](/docs/DQL/子查询.html)
+* [全文检索](/docs/DQL/全文检索.html)
