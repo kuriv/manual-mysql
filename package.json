@@ -1,6 +1,6 @@
 {
   "name": "manual-mysql",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "MySQL 是一款免费开源的关系型数据库软件。",
   "main": "index.js",
   "scripts": {
